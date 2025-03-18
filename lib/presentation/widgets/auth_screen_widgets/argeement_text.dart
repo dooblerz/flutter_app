@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practic_app_course/constants/constants.dart';
+import 'package:practic_app_course/core/utils/constants/constants.dart';
 
 // Функция для текста с соглашением
 Widget buildAgreementText(bool isChecked, Function(bool?) onChanged) {
@@ -11,7 +11,7 @@ Widget buildAgreementText(bool isChecked, Function(bool?) onChanged) {
       ),
       Expanded(
         child: Padding(
-          padding: const EdgeInsets.only(right: 7),
+          padding: const EdgeInsets.only(left: 4),
           child: RichText(
             text: TextSpan(
               style: AppTextStyle.descriptionMediumText,
@@ -26,7 +26,7 @@ Widget buildAgreementText(bool isChecked, Function(bool?) onChanged) {
                 TextSpan(text: " "),
                 TextSpan(
                   text:
-                      'пользовательское соглашение и политика конфидициальности.',
+                      'пользовательское соглаше-\nние и политика конфидициальности.',
                   style: TextStyle(decoration: TextDecoration.underline),
                 ),
               ],

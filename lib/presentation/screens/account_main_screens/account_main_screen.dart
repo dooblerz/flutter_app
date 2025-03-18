@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MainScreen extends StatelessWidget {
-  const MainScreen({super.key});
+class AccountMainScreen extends StatelessWidget {
+  const AccountMainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -327,6 +327,12 @@ class CircleStack extends StatelessWidget {
                           width: double.infinity,
                           height: 120,
                           decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(
+                                'assets/images/backgroundContainer.jpeg',
+                              ),
+                              fit: BoxFit.cover,
+                            ),
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(16),
                             boxShadow: [
