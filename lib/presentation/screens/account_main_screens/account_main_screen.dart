@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:practic_app_course/presentation/screens/support_screen/support_screen.dart';
 
 class AccountMainScreen extends StatelessWidget {
   const AccountMainScreen({super.key});
@@ -177,7 +180,7 @@ class CircleStack extends StatelessWidget {
             children: [
               Container(
                 margin: EdgeInsets.only(top: size.height * 0.3),
-                height: 540,
+                height: 480,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -193,66 +196,78 @@ class CircleStack extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           // виджет с белым фоном
-                          Container(
-                            width: 162,
-                            height: 120,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFB3EED8),
-                              borderRadius: BorderRadius.circular(16),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.1),
-                                  spreadRadius: 3,
-                                  blurRadius: 5,
-                                  offset: Offset(0, 3), // Сдвиг тени
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => SupportScreen(),
                                 ),
-                              ],
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    left: 14,
-                                    right: 10,
-                                    top: 15,
+                              );
+                            },
+                            child: Container(
+                              width: 162,
+                              height: 120,
+                              decoration: BoxDecoration(
+                                color: Color(0xFFB3EED8),
+                                borderRadius: BorderRadius.circular(16),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.1),
+                                    spreadRadius: 3,
+                                    blurRadius: 5,
+                                    offset: Offset(0, 3), // Сдвиг тени
                                   ),
-                                  child: Text(
-                                    'Помощь',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
+                                ],
+                              ),
+
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      left: 14,
+                                      right: 10,
+                                      top: 15,
+                                    ),
+                                    child: Text(
+                                      'Помощь',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                        left: 14,
-                                        right: 10,
-                                        top: 5,
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                          left: 14,
+                                          right: 10,
+                                          top: 5,
+                                        ),
+                                        child: Text(
+                                          'Служба \nподдержки',
+                                          style: TextStyle(fontSize: 12),
+                                        ),
                                       ),
-                                      child: Text(
-                                        'Служба \nподдержки',
-                                        style: TextStyle(fontSize: 12),
+                                      Expanded(
+                                        child: Image.asset(
+                                          'assets/images/bird.png',
+                                          width: 68, // Размер изображения
+                                          height: 80, // Размер изображения
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
-                                    ),
-                                    Expanded(
-                                      child: Image.asset(
-                                        'assets/images/bird.png',
-                                        width: 68, // Размер изображения
-                                        height: 80, // Размер изображения
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
+
                           Container(
                             width: 162,
                             height: 120,
@@ -382,6 +397,48 @@ class CircleStack extends StatelessWidget {
                           ),
                         ),
                       ),
+
+                      Padding(
+                        padding: const EdgeInsets.only(top: 70),
+                        child: Column(
+                          children: [
+                            Text(
+                              'Version 1.0',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xFFD2D4D6),
+                              ),
+                            ),
+                            SizedBox(height: 15),
+                            GestureDetector(
+                              onTap: () {
+                                showExitDialog(context);
+                              },
+                              child: Container(
+                                width: 327,
+                                height: 52,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFF8F9FA),
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'Выйти',
+                                    style: TextStyle(
+                                      color: Color(0xFF7D8187),
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
                       // ),
                     ],
                   ),
@@ -409,4 +466,120 @@ class CircleWidget extends StatelessWidget {
       decoration: BoxDecoration(color: color, shape: BoxShape.circle),
     );
   }
+}
+
+void showExitDialog(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    builder: (context) {
+      return Padding(
+        padding: const EdgeInsets.only(bottom: 40, left: 10, right: 10),
+        child: SizedBox(
+          height: 330,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Основной контейнер
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(16)),
+                ),
+                padding: EdgeInsets.only(top: 30),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // Иконка сверху
+                    Container(
+                      padding: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Colors.lightBlue[100],
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Icon(Icons.arrow_forward, color: Colors.purple),
+                    ),
+                    SizedBox(height: 30),
+                    // Заголовок
+                    Text(
+                      "Вы уверены, что хотите выйти?",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 8),
+                    // Описание с ссылкой
+                    TextButton(
+                      onPressed: () {
+                        // Действие при нажатии на ссылку
+                      },
+                      child: Text(
+                        "У вас есть возможность войти снова по \nномеру телефона",
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Color(0xFF7D8187),
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    SizedBox(height: 15),
+                    Divider(height: 1, color: Colors.grey[300]),
+                    SizedBox(height: 20),
+                    // Кнопка "Выйти"
+                    GestureDetector(
+                      onTap: () {
+                        exit(0);
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(13),
+                        ),
+                        child: Text('Выйти', textAlign: TextAlign.center),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              // Серый разделитель
+              Container(
+                height: 15,
+                color: Colors.transparent,
+                // Разделение
+              ),
+              // Кнопка "Отменить" -> Открывает второй BottomSheet
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 12),
+                  height: 54,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(13),
+                    color: Colors.white,
+                  ),
+                  child: Text(
+                    "Отменить",
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
 }
