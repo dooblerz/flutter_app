@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:practic_app_course/models/interests.dart';
 import 'package:practic_app_course/models/person.dart';
-import 'package:practic_app_course/presentation/screens/main_screens/custom_navigation_bar.dart';
+// import 'package:practic_app_course/presentation/screens/main_screens/custom_navigation_bar.dart';
 import 'package:practic_app_course/presentation/screens/main_screens/filter_modal.dart';
 import 'package:practic_app_course/presentation/screens/main_screens/main_dialogs.dart';
-import 'package:practic_app_course/presentation/screens/main_screens/main_screen_bar.dart';
+// import 'package:practic_app_course/presentation/screens/main_screens/main_screen_bar.dart';
 import 'package:practic_app_course/presentation/screens/main_screens/profile_detail_screen.dart.dart';
 
 class MainScreen extends StatefulWidget {
